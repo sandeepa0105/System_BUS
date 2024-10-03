@@ -1,0 +1,3 @@
+Info (10281): Verilog HDL Declaration information at master.sv(8): object "addr" differs only in case from object "ADDR" in the same scope File: D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/master.sv Line: 8
+Warning (10273): Verilog HDL warning at read_MUX.sv(15): extended using "x" or "z" File: D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/read_MUX.sv Line: 15
+Warning (10273): Verilog HDL warning at read_MUX.sv(21): extended using "x" or "z" File: D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/read_MUX.sv Line: 21

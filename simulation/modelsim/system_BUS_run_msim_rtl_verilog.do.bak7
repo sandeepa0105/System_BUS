@@ -1,0 +1,10 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/arbiter.sv}
+vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/arbiter_tb.sv}
+

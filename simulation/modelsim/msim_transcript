@@ -1,0 +1,155 @@
+# Reading C:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
+# do system_BUS_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/17.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/arbiter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/arbiter.sv 
+# -- Compiling module arbiter
+# 
+# Top level modules:
+# 	arbiter
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/top.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/top.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/top_tb.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/top_tb.sv 
+# -- Compiling module top_tb
+# 
+# Top level modules:
+# 	top_tb
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/master2.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/master2.sv 
+# -- Compiling module master2
+# 
+# Top level modules:
+# 	master2
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/slave_1.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/slave_1.sv 
+# -- Compiling module slave_1
+# 
+# Top level modules:
+# 	slave_1
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/decoder.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/decoder.sv 
+# -- Compiling module decoder
+# 
+# Top level modules:
+# 	decoder
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/slave_2.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/slave_2.sv 
+# -- Compiling module slave_2
+# 
+# Top level modules:
+# 	slave_2
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/slave_3_sp.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/slave_3_sp.sv 
+# -- Compiling module slave_3_sp
+# 
+# Top level modules:
+# 	slave_3_sp
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/read_MUX.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/read_MUX.sv 
+# -- Compiling module read_MUX
+# 
+# Top level modules:
+# 	read_MUX
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/accedemic/sem-7/EN4021\ -\ Advanced\ Digital\ Systems/Thayaparan/System\ Bus/system_BUS_v2.0 {D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/ready.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:46:17 on Oct 03,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0" D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/ready.sv 
+# -- Compiling module ready
+# 
+# Top level modules:
+# 	ready
+# End time: 19:46:17 on Oct 03,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vsim work.top_tb
+# vsim work.top_tb 
+# Start time: 19:46:21 on Oct 03,2024
+# Loading sv_std.std
+# Loading work.top_tb
+# Loading work.top
+# Loading work.arbiter
+# Loading work.master2
+# Loading work.slave_1
+# Loading work.slave_2
+# Loading work.slave_3_sp
+# Loading work.decoder
+# Loading work.read_MUX
+# Loading work.ready
+add wave -position end  sim:/top_tb/clk
+add wave -position end  sim:/top_tb/m1_U_addr
+add wave -position end  sim:/top_tb/m1_U_mode
+add wave -position end  sim:/top_tb/m1_U_rdata
+add wave -position end  sim:/top_tb/m1_U_start
+add wave -position end  sim:/top_tb/m1_U_wdata
+add wave -position end  sim:/top_tb/m1_state_show
+add wave -position 1  sim:/top_tb/rst_n
+add wave -position end  sim:/top_tb/uut/ADDRESS
+add wave -position end  sim:/top_tb/uut/MODE
+add wave -position end  sim:/top_tb/uut/M_select
+add wave -position end  sim:/top_tb/uut/SELR
+add wave -position end  sim:/top_tb/uut/VALID
+add wave -position end  sim:/top_tb/uut/WDATA
+add wave -position end  sim:/top_tb/uut/m1_inst/rdata
+add wave -position end  sim:/top_tb/uut/m1_inst/wdata
+add wave -position end  sim:/top_tb/uut/slave2_inst/STORE[1]
+add wave -position end  sim:/top_tb/uut/slave2_inst/ready
+add wave -position end  sim:/top_tb/uut/slave3_inst/STORE[1]
+add wave -position end  sim:/top_tb/uut/slave3_inst/ready
+run
+# Read data from master:
+# ** Note: $finish    : D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/top_tb.sv(107)
+#    Time: 425 ps  Iteration: 0  Instance: /top_tb
+# 1
+# Break in Module top_tb at D:/accedemic/sem-7/EN4021 - Advanced Digital Systems/Thayaparan/System Bus/system_BUS_v2.0/top_tb.sv line 107
+# End time: 19:54:43 on Oct 03,2024, Elapsed time: 0:08:22
+# Errors: 0, Warnings: 0
