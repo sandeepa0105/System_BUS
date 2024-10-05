@@ -9,7 +9,7 @@ module decoder (
 );
 
     always@(posedge clk) begin
-        if(!rst_n) begin
+        if(!rst_n || (addr ==16'b0)) begin
             SELR <= 2'b00;  
             slave1_sel <=0;
             slave2_sel <=0;

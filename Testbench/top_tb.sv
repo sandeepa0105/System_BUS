@@ -82,12 +82,14 @@ module top_tb;
         m1_U_wdata = 8'h55;    // Write data
         m1_U_mode = 1;         // Set Master 1 in write mode
         #10;
-        m2_U_mode = 1;         // Set Master 2 in write mode
-        m2_U_start = 1;        // Start write operation
-        m2_U_addr = 16'h2001;  // Set write address
-        m2_U_wdata = 8'hAA;    // Write data
+        // m2_U_mode = 1;         // Set Master 2 in write mode
+        // m2_U_start = 1;        // Start write operation
+        // m2_U_addr = 16'h2001;  // Set write address
+        // m2_U_wdata = 8'hAA;    // Write data
         #50;
         m1_U_start = 0; // End write operation
+        // #10;
+        // m2_U_start = 0; // End write operation
         #80;
 
         //read operation

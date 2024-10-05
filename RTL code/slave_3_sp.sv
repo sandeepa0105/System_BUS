@@ -7,7 +7,10 @@ module slave_3_sp(
     input logic valid,
     output logic [7:0] rdata,
     output logic ready,
-    input logic sl
+    input logic sl,
+    output logic split,
+    output logic arbiter_req,
+    input logic arbiter_grant
 
 
 );
@@ -19,14 +22,18 @@ module slave_3_sp(
     reg ready_reg;
     reg mode_reg;
     reg [3:0] count;
+    reg split_reg;
+    reg arbiter_req_reg;
 
     reg [7:0] STORE [0:4095];
 
-    reg [1:0] stateReg;
+    reg [2:0] stateReg;
 
-    localparam IDLE = 2'b00;
-    localparam GET = 2'b01;
-    localparam RES = 2'b10;
+    localparam IDLE = 3'b000;
+    localparam GET = 3'b001;
+    localparam RES = 3'b010;
+    localparam SPLIT = 3'b011;
+    localparam ARBITER_REQ = 3'b100;
 
     always@(posedge clk) begin
         if (!rst_n) begin
@@ -37,6 +44,8 @@ module slave_3_sp(
             mode_reg <= 1'b0;
             stateReg <= IDLE;
             count <= 4'b0;
+            split_reg <= 1'b0;
+            arbiter_req_reg <= 1'b0;
         end else begin
             case(stateReg)
                 IDLE: begin
@@ -44,16 +53,21 @@ module slave_3_sp(
                         addr_reg <= addr;
                         wdata_reg <= wdata;
                         mode_reg <= mode;
-                        stateReg <= GET;
+                        // stateReg <= GET;
                         count <= 4'b0001;
+                        stateReg <= SPLIT;
+                        split_reg <= 1'b1;
                     end else begin
                         stateReg <= IDLE;
                     end
                 end
                 GET: begin
                     if (count == 4'b0011) begin
-                        stateReg <= RES;
-                        ready_reg <= 1'b1;
+                        // stateReg <= RES;
+                        // ready_reg <= 1'b1;
+                        stateReg <= ARBITER_REQ;
+                        arbiter_req_reg <= 1'b1;
+
                     end else begin
                         count <= count + 1'b1;
                         stateReg <= GET;
@@ -62,6 +76,22 @@ module slave_3_sp(
                 RES: begin
                     stateReg <= IDLE;
                     ready_reg <= 1'b0;
+                end
+
+                SPLIT: begin
+                    split_reg <= 1'b0;
+                    stateReg <= GET;
+                end
+
+                ARBITER_REQ: begin
+                    if(arbiter_grant) begin
+                        stateReg <= RES;
+                        ready_reg <= 1'b1;
+                        split_reg <= 1'b0;
+                        arbiter_req_reg <= 1'b0;
+                    end else begin
+                        stateReg <= ARBITER_REQ;
+                    end
                 end
             endcase
         end
@@ -77,8 +107,11 @@ module slave_3_sp(
             rdata_reg <= STORE[addr_reg[11:0]];
         end
     end
+
     assign rdata = rdata_reg;
     assign ready = ready_reg;
+    assign split = split_reg;
+    assign arbiter_req = arbiter_req_reg;
 
 
 

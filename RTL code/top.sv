@@ -43,6 +43,9 @@ module top(
     logic MODE;
     logic VALID;
     logic M_select;
+    logic split;
+    logic split_req;
+    logic split_grant;
 
 
     
@@ -55,7 +58,10 @@ module top(
         .m2_req(m2_breq),
         .m1_grant(m1_bgrant),
         .m2_grant(m2_bgrant),
-        .M_select(M_select)
+        .M_select(M_select),
+        .split(split),
+        .split_req(split_req),
+        .split_grant(split_grant)
     );
 
     // Instantiate master 1
@@ -134,7 +140,10 @@ module top(
         .valid(VALID),
         .rdata(s3_rdata),
         .ready(s3_ready),
-        .sl(s3)
+        .sl(s3),
+        .split(split),
+        .arbiter_req(split_req),
+        .arbiter_grant(split_grant)
     );
 
     //decoder

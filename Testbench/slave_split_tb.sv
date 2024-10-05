@@ -1,17 +1,20 @@
-module slave_tb;
+module slave_split_tb;
+
     logic clk;
     logic rst_n;
+
     logic mode;
     logic [15:0] addr;
     logic [7:0] wdata;
     logic valid;
     logic [7:0] rdata;
     logic ready;
-    logic s1;
+    logic sl;
+    logic split;
+    // logic arbiter_req;
+    logic arbiter_grant;
 
-
-
-    slave_1 uut (
+    slave_3_sp uut (
         .clk(clk),
         .rst_n(rst_n),
         .mode(mode),
@@ -20,7 +23,10 @@ module slave_tb;
         .valid(valid),
         .rdata(rdata),
         .ready(ready),
-        .s1(s1)
+        .sl(sl),
+        .split(split),
+        // .arbiter_req(arbiter_req),
+        .arbiter_grant(arbiter_grant)
     );
 
     initial begin
@@ -35,36 +41,31 @@ module slave_tb;
         addr = 16'h0000;
         wdata = 8'h00;
         valid = 0;
-        s1 = 0;
+        sl = 0;
+        split = 0;
+        // arbiter_req = 0;
+        arbiter_grant = 0;
 
         #10;
         rst_n = 1;
-
         #10;
         mode = 1;
         addr = 16'h0001;
         wdata = 8'hFF;
-        #10;
+        #20;
         valid = 1;
-        #10;
-        s1 = 1;
-
-        #50;
-        s1 = 0;
-        mode = 0;
-        addr = 16'h0001;
-        #10;
-        valid = 1;
-        s1 = 1;
-        
-
+        sl = 1;
+        #100;
+        arbiter_grant = 1;
+        #20;
 
         #50;
         $display("Read data from master:");
         #10;
         $finish;
-    end
 
+        
+    end
 
 
 
