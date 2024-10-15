@@ -4,10 +4,10 @@ module slave_1(
     input logic mode,
     input logic [15:0] addr,
     input logic [7:0] wdata,
-    input logic valid,
+    input logic m_valid,
     output logic [7:0] rdata,
-    output logic ready,
-    input logic sl
+    output logic sl_valid,
+    input logic sl_select
 
 
 );
@@ -16,7 +16,7 @@ module slave_1(
     reg [15:0] addr_reg;
     reg [7:0] wdata_reg;
     reg [7:0] rdata_reg;
-    reg ready_reg;
+    reg sl_valid_reg;
     reg mode_reg;
     reg [3:0] count;
 
@@ -33,14 +33,14 @@ module slave_1(
             addr_reg <= 16'b0;
             wdata_reg <= 8'b0;
             // rdata_reg <= 8'b0;
-            ready_reg <= 1'b0;
+            sl_valid_reg <= 1'b0;
             mode_reg <= 1'b0;
             stateReg <= IDLE;
             count <= 4'b0;
         end else begin
             case(stateReg)
                 IDLE: begin
-                    if(sl && valid) begin
+                    if(sl_select && m_valid) begin
                         addr_reg <= addr;
                         wdata_reg <= wdata;
                         mode_reg <= mode;
@@ -53,7 +53,7 @@ module slave_1(
                 GET: begin
                     if (count == 4'b0011) begin
                         stateReg <= RES;
-                        ready_reg <= 1'b1;
+                        sl_valid_reg <= 1'b1;
                     end else begin
                         count <= count + 1'b1;
                         stateReg <= GET;
@@ -61,7 +61,7 @@ module slave_1(
                 end
                 RES: begin
                     stateReg <= IDLE;
-                    ready_reg <= 1'b0;
+                    sl_valid_reg <= 1'b0;
                 end
             endcase
         end
@@ -78,7 +78,7 @@ module slave_1(
         end
     end
     assign rdata = rdata_reg;
-    assign ready = ready_reg;
+    assign sl_valid = sl_valid_reg;
 
 
 
