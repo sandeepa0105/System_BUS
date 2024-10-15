@@ -33,7 +33,7 @@ module top(
     logic m1_mode,m2_mode;
     logic m1_valid,m2_valid;
     logic s1,s2,s3;
-    logic [1:0] SELR;
+    logic [2:0] SELR;
     logic [7:0] s1_rdata,s2_rdata,s3_rdata;
     logic s1_ready,s2_ready,s3_ready;
     logic [7:0] rdata;

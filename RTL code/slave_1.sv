@@ -7,6 +7,7 @@ module slave_1(
     input logic m_valid,
     output logic [7:0] rdata,
     output logic sl_valid,
+    output logic sl_ready,
     input logic sl_select
 
 
@@ -20,7 +21,7 @@ module slave_1(
     reg mode_reg;
     reg [3:0] count;
 
-    reg [7:0] STORE [0:2047];
+    reg [7:0] STORE [0:255]; //2048 = 8*256
 
     reg [1:0] stateReg;
 
@@ -56,7 +57,7 @@ module slave_1(
                         sl_valid_reg <= 1'b1;
                     end else begin
                         count <= count + 1'b1;
-                        stateReg <= GET;
+                        
                     end
                 end
                 RES: begin
@@ -73,6 +74,7 @@ module slave_1(
             rdata_reg <= 8'b0;
         end else if (mode_reg == 1) begin
             STORE[addr_reg[10:0]] <= wdata_reg;
+            rdata_reg <= wdata_reg;
         end else if(mode_reg == 0) begin
             rdata_reg <= STORE[addr_reg[10:0]];
         end
