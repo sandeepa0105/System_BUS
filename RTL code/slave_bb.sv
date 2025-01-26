@@ -1,91 +1,95 @@
-module slave_bb( //split transactions are not supported
+module slave_bb( 
 	input logic clk,
 	input logic rstn,	
-	input logic bgrant,	
-	output logic breq,
-	//input from other group
-	input logic [15:0]address_in,
-	input logic [7:0]data_in,
-	input logic valid_in,
-	input logic mode,
-	
-	//output to the slave
-	output logic [15:0]sl_address,
-	output logic [7:0]sl_wdata,
-	output logic sl_mode,
-	output logic m_valid,
-
-	//input from the slave
-	input logic sl_valid,
-	input logic sl_ready,
-	input logic sl_rdata,
-	
-	//output to other group
-	output logic [15:0]address_out,
+    input logic  sl,
+	//input from the master
+	input logic [15:0]address,
+	input logic [7:0]wdata,
+	input logic mode_in,
+	input logic valid,
+    
+    //output to the other group
+	output logic [5:0]address_out,
 	output logic [7:0]data_out,
-	output logic valid_out
+	output logic valid_out,
+	output logic mode_out,
+
+
+	//input from the other group
+	input logic sl_valid,
+	input logic [7:0]sl_rdata,
+	
+	//output to the master
+	output logic [7:0]data_in,
+	output logic valid_in
 	
 );
-	logic counter[2:0]; 
-	reg data_out_reg[7:0];
-	enum logic[2:0] {IDLE,TAKE_IN,SEND_OUT} state,next_state;
 	
-	always_comb begin
-		case(state)
-			IDLE: next_state = valid_in? TAKE_IN:IDLE;
-			TAKE_IN : begin next_state = bgrant? SEND_OUT; counter<= 1'd0;end
-			SEND_OUT : next_state = ready? IDLE;
-			default:next_state = IDLE;
-		endcase
+	reg sl_valid_reg;
+	reg [7:0] sl_rdata_reg;
+	reg [5:0]address_reg;
+	reg [7:0]wdata_reg;
+	reg mode_in_reg;
+	reg valid_reg;
+	
+    assign address_out = address_reg;
+    assign data_out = wdata_reg;
+	assign valid_out = valid_reg;
+	assign mode_out = mode_in_reg;
+    assign data_in = sl_rdata_reg;
+    assign valid_in = sl_valid_reg;
 
+	reg [1:0] stateReg;
+
+	localparam IDLE = 2'b00;
+    localparam TAKE = 2'b01;
+    localparam SEND = 2'b10;
+
+	always@(posedge clk) begin
+		if(!rstn) begin
+			sl_valid_reg <= 0;
+			sl_rdata_reg <= 8'b0;
+			address_reg <= 16'b0;
+			wdata_reg <= 8'b0;
+			mode_in_reg <= 1'b0;
+			valid_reg <= 1'b0;
+			stateReg <= IDLE;
+		end else begin
+			case(stateReg)
+				IDLE: begin
+					if(valid && sl) begin
+						address_reg <= {address[14:13],address[2:0]};
+						wdata_reg <= wdata;
+						valid_reg <= valid;
+						mode_in_reg <= mode_in;
+						stateReg <= TAKE;
+					end else begin
+						stateReg <= IDLE;
+					end
+				end
+				TAKE: begin
+					if(sl_valid) begin
+						stateReg <= SEND;
+						sl_valid_reg <= 1;
+						sl_rdata_reg <= sl_rdata;
+					end else begin
+						stateReg <= TAKE;
+					end
+				end
+				SEND: begin
+					// stateReg <= IDLE;
+					if(!sl) begin
+						stateReg <= IDLE;
+					end else begin
+						stateReg <= SEND;
+					end
+				end
+
+			endcase
+		end
 	end
-	
-	always_ff (@posedge clk)
-		if(!rstn)  
-			next_state = IDLE;
-			counter <= 1'd0;
-		state = next_state;// consider the previous state also
-		case(state)
-			IDLE: begin
-				
-				breq <= 0;
-				valid_out<=0;
-			end
-			TAKE_IN: begin 
-				if (valid_in) begin
-				address_out = address;
-				address_out[15]<=0; // to map addresses
-				
-				breq <=1;
-				m_valid<=1;
-				end 
-				
-				
-			SEND_OUT:begin
-				if (!bgrant) 
-					next_state = IDLE;
-				
-				//wait several clk cycles
-				if(sl_valid)begin
-					data_out_reg <= sl_rdata;
-					valid_out <=1;
-					counter <= counter + 1;
-				end
-				if (counter == 3'd2) begin
-					counter <= 1'd0;
-					next_state = IDLE;
-				end
-				
-					
-			end
-				
-			end
-		endcase
 
-	assign sl_rdata = data_in;
-	assign sl_wdata = data_out;
-	assign sl_mode = mode;
-	assign m_valid = valid_in;
-	assign data_out = data_out_reg;
-end module 
+endmodule
 
+
+				
